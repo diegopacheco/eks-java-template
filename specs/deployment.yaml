@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: javajetty
+spec:
+  selector:
+    matchLabels:
+      app: javajetty
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: javajetty
+    spec:
+      containers:
+      - name: javajetty
+        image: diegopacheco/javajetty
+        ports:
+        - containerPort: 8080

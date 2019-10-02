@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:  
+  name: javajetty-service
+spec:
+  selector:    
+    app: javajetty
+  type: ClusterIP
+  ports:  
+  - name: http
+    port: 8080
+    protocol: TCP
