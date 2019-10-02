@@ -29,6 +29,7 @@ docker push diegopacheco/javajetty
 minikube start
 
 kubectl apply -f specs/
+kubectl get all
 mypod=$(kubectl get pods -l app=javajetty --output=jsonpath={.items..metadata.name})
 kubectl port-forward $mypod 8080:8080
 curl http://localhost:8080/rest/datetime
@@ -42,6 +43,7 @@ eksctl create cluster --name javajetty --nodes=1 --region=us-west-2 --ssh-public
 aws eks --region us-west-2 update-kubeconfig --name javajetty
 
 kubectl apply -f specs/
+kubectl get all
 mypod=$(kubectl get pods -l app=javajetty --output=jsonpath={.items..metadata.name})
 kubectl port-forward $mypod 8080:8080
 curl http://localhost:8080/rest/datetime
